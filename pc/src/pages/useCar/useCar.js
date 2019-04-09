@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Table, Input, Select, DatePicker, Button, Card, Badge } from 'antd';
+import { Table, Input, Select, DatePicker, Button, Card } from 'antd';
 import request from '../../helpers/request';
 import store from './store';
 import { observer } from 'mobx-react';
@@ -59,8 +59,7 @@ class UseCar extends Component {
     },
     {
       title: '操作',
-      render: (text, record, index) => (record.check == 1 ? <span><a onClick={() => { this.goDetail(record) }}><Badge offset={[7,-5]} dot>查看进度</Badge></a></span>
-      :<span><a onClick={() => { this.goDetail(record) }}>查看进度</a></span>)
+      render: (text, record, columns) => (<span><a onClick={() => { this.goDetail(record) }}>查看进度</a></span>)
 
     }
   ]
@@ -123,7 +122,6 @@ class UseCar extends Component {
         xml.setRequestHeader('token', localStorage.getItem('token'))
       },
       success: (res) => {
-        console.log('公务用车',res.data)
         store.dataSource = res.data;
         store.total = res.total;
         store.current = res.current_page;

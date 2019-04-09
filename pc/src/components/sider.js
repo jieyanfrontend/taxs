@@ -39,7 +39,7 @@ class SiderMenu extends Component {
           <Menu.Item key="9"><Link to='/hotelBooking'>酒店预定</Link></Menu.Item>
         </SubMenu>
         <SubMenu key="sub7" title={<span><Icon type="car" theme="twoTone" />公务用车</span>}>
-          <Menu.Item key="10"><Link to='/useCar'>公务用车</Link></Menu.Item>
+          <Menu.Item key="9"><Link to='/useCar'>公务用车</Link></Menu.Item>
         </SubMenu>
       </Menu>
       // <Icon type="appstore" theme="twoTone" />

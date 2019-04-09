@@ -12,7 +12,6 @@ class Store {
     log: [],
     proDataSource: []
   };
-  @observable revertSkuList = [];
 }
 
 export default new Store();

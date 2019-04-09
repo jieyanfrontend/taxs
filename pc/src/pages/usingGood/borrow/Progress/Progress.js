@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Button, Table, Card, Modal, Badge } from 'antd';
+import { Button, Table, Card, Modal } from 'antd';
 import { observer } from 'mobx-react';
 import Approval from './ApprovalModal/Modal';
 import request from '../../../../helpers/request';
@@ -50,8 +50,7 @@ class EntranceProgress extends Component {
     {
       title: '状态',
       dataIndex: 'status',
-      render: (text,record,index) => (record.check == 1 ? <span><Badge offset={[7,-5]} dot>{_status[text]}</Badge></span>
-        :<span>{_status[text]}</span>)
+      render: (text) => (<span>{_status[text]}</span>)
     },
   ]
 
@@ -95,14 +94,12 @@ class EntranceProgress extends Component {
 
   componentDidMount() {
     this.fetchList();
-    this.preGetRevertSku();
   }
   render() {
     let { params, data, dataSource, info } = store;
     let { id } = this.props.match.params;
     let { proDataSource } = info;
     let step = proDataSource.length;
-    // let step = 3;让他强行等于三，调起归还
     let _check = data.check === 1;
     let _cancel = data.cancel === 1;
     let { history } = this.props;
@@ -156,25 +153,6 @@ class EntranceProgress extends Component {
         store.info.proDataSource = pro;
       },
     })
-  }
-  preGetRevertSku = () => {
-    let { id } = this.props.match.params;
-    request({
-      url: '/api/v1/sku/apply/detail',
-      method: 'GET',
-      data: {
-        type: 'borrow_t',
-        id: id
-      },
-      beforeSend: (xml) => {
-        xml.setRequestHeader('token', localStorage.getItem('token'))
-      },
-      success: (res) => {
-        console.log('res',res);
-        store.revertSkuList = res;
-      },
-    })
-
   }
   cancel = () => {
     let { id } = this.props.match.params;

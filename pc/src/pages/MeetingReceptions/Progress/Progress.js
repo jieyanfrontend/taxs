@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Button, Table, Card, Modal, Badge } from 'antd';
+import { Button, Table, Card, Modal } from 'antd';
 import { observer } from 'mobx-react';
 import Approval from './ApprovalModal/Modal';
 import request from '../../../helpers/request';
@@ -75,8 +75,7 @@ class MeetingPlaceProgress extends Component {
     {
       title: '状态',
       dataIndex: 'status',
-      render: (text,record,index) => (record.check == 1 ? <span><Badge offset={[7,-5]} dot>{_status[text]}</Badge></span>
-        :<span>{_status[text]}</span>)
+      render: (text) => (<span>{_status[text]}</span>)
     },
   ]
   detailColumns = [

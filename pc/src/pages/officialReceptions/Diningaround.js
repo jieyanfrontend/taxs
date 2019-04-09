@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Table, Input, Select, DatePicker, Button, Card, Badge } from 'antd';
+import { Table, Input, Select, DatePicker, Button, Card } from 'antd';
 import store from './store';
 import nextStore from './Progress/store';
 import request from '../../helpers/request';
@@ -73,8 +73,7 @@ class Diningaround extends Component {
     },
     {
       title: '操作',
-      render: (text, record, index) => (record.check == 1 ? <span><a onClick={() => { this.goDetail(record) }}><Badge offset={[7,-5]} dot>查看进度</Badge></a></span>
-      :<span><a onClick={() => { this.goDetail(record) }}>查看进度</a></span>)
+      render: (text, record, columns) => (<span><a onClick={() => { this.goDetail(record) }}>查看进度</a></span>)
     }
   ]
   render() {
@@ -134,7 +133,6 @@ class Diningaround extends Component {
         xml.setRequestHeader('token', localStorage.getItem('token'))
       },
       success: (res) => {
-        console.log('酒店预订页',res.data)
         store.dataSource = res.data;
         let total = Number(res.total);
         store.total = total;

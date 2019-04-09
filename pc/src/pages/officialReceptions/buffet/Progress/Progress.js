@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Card, Table, Button,Modal, Badge } from 'antd';
+import { Card, Table, Button,Modal } from 'antd';
 import { observer } from 'mobx-react';
 import store from './store';
 import request from '../../../../helpers/request';
@@ -49,8 +49,7 @@ const basicMsg = [
   {
     title: '状态',
     dataIndex: 'status',
-    render: (text,record,index) => (record.check == 1 ? <span><Badge offset={[7,-5]} dot>{_status[text]}</Badge></span>
-      :<span>{_status[text]}</span>)
+    render: (text) => (<span>{_status[text]}</span>)
   },
 ]
 

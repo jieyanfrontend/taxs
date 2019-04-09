@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Table, Input, Select, DatePicker, Button, Card, Badge } from 'antd';
+import { Table, Input, Select, DatePicker, Button, Card } from 'antd';
 import store from './store';
 import request from '../../helpers/request';
 import { observer } from 'mobx-react';
@@ -61,8 +61,7 @@ class MeetingPlace extends Component {
     },
     {
       title: '操作',
-      render: (text, record, columns) => (record.check == 1 ? <span><a onClick={() => { this.goDetail(record) }}><Badge offset={[7,-5]} dot>查看进度</Badge></a></span>
-      :<span><a onClick={() => { this.goDetail(record) }}>查看进度</a></span>)
+      render: (text, record, columns) => (<span><a onClick={() => { this.goDetail(record) }}>查看进度</a></span>)
     }
   ]
   render() {
