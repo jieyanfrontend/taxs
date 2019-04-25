@@ -87,11 +87,11 @@ class MyEntrance extends Component {
           sessionStorage.setItem('role',res.role);
           }
       })
-
-
     };
   render() {
     let { total, dataSource, needList,needTotal, current,needCurrent } = store;
+    console.log(dataSource);
+    console.log(needList);
     const HistoryList = () => (
       dataSource.map(e => (<div key={e.flow.id} style={{ fontSize: 16, padding: '10px', background: '#eefaff', border: '1px solid #bbe1f1' }}>
         <span style={{ marginRight: '10px', padding: '5px 0', }}>{e.flow.create_time}</span>
@@ -213,7 +213,7 @@ class MyEntrance extends Component {
         size: 10
       },
       beforeSend: (xml) => {
-        xml.setRequestHeader('token', sessionStorage.getItem('token'))
+        xml.setRequestHeader('token', sessionStorage.getItem('token'));
       },
       success: (res) => {
         store.dataSource = res.data;
